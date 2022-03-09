@@ -78,6 +78,7 @@ namespace FitnessApi.Data
             Athlete athlete1 = new Athlete(1, "Seppe", "Colpaert", "seppe.colpaert2@gmail.com", new DateTime(2000, 5, 10), 83.5, 191);
             Athlete athlete2 = new Athlete(2, "Jan", "Jansens", "jan@gmail.com", new DateTime(1990, 1, 1), 95, 210);
             Athlete athlete3 = new Athlete(3, "Peter", "Selie", "peterselie@gmail.com", new DateTime(1999, 12, 31), 70, 170);
+            Athlete athlete4 = new Athlete(6, "Peter", "Selie", "peterselie@gmail.com", new DateTime(1999, 12, 31), 70, 170);
 
             athlete1.TrainingPlans.Add(plans[0]);
             athlete2.TrainingPlans.Add(plans[1]);
@@ -86,7 +87,7 @@ namespace FitnessApi.Data
             //athlete3.TrainingPlans.Add(plans[0]);
             //athlete3.TrainingPlans.Add(plans[1]);
 
-            return new List<Athlete> { athlete1 , athlete2 , athlete3 };   
+            return new List<Athlete> { athlete1 , athlete2 , athlete3, athlete4 };   
         }
 
         public static List<Coach> CreateCoaches(List<Athlete> athletes)
