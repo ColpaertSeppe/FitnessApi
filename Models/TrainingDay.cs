@@ -15,7 +15,7 @@
 
         public TrainingDay(int id, string name, string description, DateTime trainingDate)
         {
-            id = id;
+            Id = id;
             Name = name;
             Description = description;
             TrainingDate = trainingDate;
