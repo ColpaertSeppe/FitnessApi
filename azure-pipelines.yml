@@ -74,6 +74,6 @@ jobs:
         - task: AzureWebApp@1
           displayName: 'Azure App Service Deploy: website'
           inputs:
-            azureSubscription: 'Resource Manager - todoApp - dev'
+            azureSubscription: 'Resource Manager - FitnessApi - dev'
             appName: '$(WebAppNameDev)'
             package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
