@@ -32,9 +32,28 @@ namespace FitnessApi.Controllers
             }).ToListAsync();
         }
 
-        // todo
-        // api/coaches/id
+        // GET: api/Coaches/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<CoachDTO.DetailCoach>>> GetCoachDetail(int id)
+        {
+            var coach = await _context.Coaches.FindAsync(id);
 
-     
+            if (coach == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.Coaches.Where(x => x.Id == id).Select(x => new CoachDTO.DetailCoach
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Email = x.Email,
+                DateOfBirth = x.DateOfBirth,
+                Biography = x.Biography,
+                Athletes = x.Athletes,
+            }).ToListAsync();
+        }
+
     }
 }

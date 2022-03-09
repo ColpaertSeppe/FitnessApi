@@ -13,5 +13,13 @@
             TrainingDate = trainingDate;
         }
 
+        public TrainingDay(int id, string name, string description, DateTime trainingDate)
+        {
+            id = id;
+            Name = name;
+            Description = description;
+            TrainingDate = trainingDate;
+        }
+
     }
 }
