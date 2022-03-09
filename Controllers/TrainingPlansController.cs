@@ -29,5 +29,25 @@ namespace FitnessApi.Controllers
                 
             }).ToListAsync();
         }
+
+        // GET: api/TrainingPlans/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<TrainingPlanDTO.DetailPlan>>> GetTrainingPlanDetail(int id)
+        {
+            var coach = await _context.TrainingPlans.FindAsync(id);
+
+            if (coach == null)
+            {
+                return NotFound();
+            }
+
+            return await _context.TrainingPlans.Where(x => x.Id == id).Select(x => new TrainingPlanDTO.DetailPlan
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description= x.Description,
+                TrainingDays = x.TrainingDays,
+            }).ToListAsync();
+        }
     }
 }

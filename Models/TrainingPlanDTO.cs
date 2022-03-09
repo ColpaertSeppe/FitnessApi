@@ -11,7 +11,7 @@
 
         public class DetailPlan : IndexPlan
         {
-            public List<TrainingDayDTO> TrainingDays { get; set; }
+            public List<TrainingDay> TrainingDays { get; set; }
         }
         
         
