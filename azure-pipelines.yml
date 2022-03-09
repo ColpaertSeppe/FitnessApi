@@ -17,13 +17,13 @@ stages:
       - npm
 
     variables:
-      dotnetSdkVersion: '5.x'
+      dotnetSdkVersion: '6.x'
 
     steps:
-#    - task: UseDotNet@2
-#      displayName: 'Use .NET SDK $(dotnetSdkVersion)'
-#      inputs:
-#        version: '$(dotnetSdkVersion)'
+    - task: UseDotNet@2
+      displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+      inputs:
+        version: '$(dotnetSdkVersion)'
         
     - task: DotNetCoreCLI@2
       displayName: 'Restore project dependencies'
@@ -50,14 +50,12 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
         
-
 - stage: 'Dev'
   displayName: 'Deploy to the dev environment'
   dependsOn: Build
   condition: 
       succeeded()
   jobs:
-  
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
