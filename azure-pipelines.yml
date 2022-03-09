@@ -16,11 +16,6 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
-- task: Npm@1
-  displayName: 'Run npm install'
-  inputs:
-    verbose: false
-
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
   inputs:
