@@ -10,9 +10,9 @@
 
         //tracking
         public DateTime CreationDate { get; set; }
-        public string ModifiedDate { get; set; }
-        public User CreatedBy { get; set; }
-        public User ModifiedBy { get; set; }
+        //public string ModifiedDate { get; set; }
+        //public User CreatedBy { get; set; }
+        //public User ModifiedBy { get; set; }
 
         public User()
         {
