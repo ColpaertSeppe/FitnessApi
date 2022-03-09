@@ -20,11 +20,11 @@ stages:
       dotnetSdkVersion: '5.x'
 
     steps:
-#    - task: UseDotNet@2
-#      displayName: 'Use .NET SDK $(dotnetSdkVersion)'
-#      inputs:
-#        version: '$(dotnetSdkVersion)'
-
+    - task: UseDotNet@2
+      displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+      inputs:
+        version: '$(dotnetSdkVersion)'
+        
     - task: DotNetCoreCLI@2
       displayName: 'Restore project dependencies'
       inputs:
@@ -55,11 +55,7 @@ stages:
   displayName: 'Deploy to the dev environment'
   dependsOn: Build
   condition: 
-#    and
-#    (
-      succeeded(),
-#      eq(variables['Build.SourceBranchName'], variables['releaseBranchName'])
-#    )
+      succeeded()
   jobs:
   
   - deployment: Deploy
@@ -77,6 +73,6 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Resource Manager - todoApp - dev'
+              azureSubscription: 'Resource Manager - FitnessApi - dev'
               appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
