@@ -1,5 +1,8 @@
 trigger:
 - '*'
+variables:
+  buildConfiguration: 'Release'
+  dotnetSdkVersion: '6.x'
 
 stages:
 - stage: 'Build'
@@ -11,10 +14,6 @@ stages:
       vmImage: 'ubuntu-20.04'
       demands:
       - npm
-
-    variables:
-      buildConfiguration: 'Release'
-      dotnetSdkVersion: '6.x'
 
     steps:
     - task: UseDotNet@2
