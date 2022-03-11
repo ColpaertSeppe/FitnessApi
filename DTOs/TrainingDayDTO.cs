@@ -1,4 +1,5 @@
-﻿namespace FitnessApi.Models { 
+﻿namespace FitnessApi.DTOs
+{ 
     public class TrainingDayDTO
     {
         public int Id { get; set; }

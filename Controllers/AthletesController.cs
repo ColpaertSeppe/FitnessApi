@@ -1,4 +1,5 @@
 ﻿using FitnessApi.Data;
+using FitnessApi.DTOs;
 using FitnessApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +20,9 @@ namespace FitnessApi.Controllers
 
         //GET: api/Atheletes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AtheleteDTO.IndexAthlete>>> GetAtheletes()
+        public async Task<ActionResult<IEnumerable<AthleteDTO.IndexAthlete>>> GetAtheletes()
         {
-            return await _context.Athletes.Select(x => new AtheleteDTO.IndexAthlete
+            return await _context.Athletes.Select(x => new AthleteDTO.IndexAthlete
             {
                 Id = x.Id,
                 FirstName = x.FirstName,
@@ -35,7 +36,7 @@ namespace FitnessApi.Controllers
 
         // GET: api/Atheletes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<AtheleteDTO.DetailAthlete>>> GetAthleteDetail(int id)
+        public async Task<ActionResult<IEnumerable<AthleteDTO.DetailAthlete>>> GetAthleteDetail(int id)
         {
             var athlete = await _context.Athletes.FindAsync(id);
 
@@ -44,7 +45,7 @@ namespace FitnessApi.Controllers
                 return NotFound();
             }
 
-            return await _context.Athletes.Where(x => x.Id == id).Select(x => new AtheleteDTO.DetailAthlete
+            return await _context.Athletes.Where(x => x.Id == id).Select(x => new AthleteDTO.DetailAthlete
             {
                 Id = x.Id,
                 FirstName = x.FirstName,

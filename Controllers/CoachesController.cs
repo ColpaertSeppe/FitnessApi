@@ -1,4 +1,5 @@
 ﻿using FitnessApi.Data;
+using FitnessApi.DTOs;
 using FitnessApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

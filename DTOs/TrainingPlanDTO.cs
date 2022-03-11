@@ -1,4 +1,6 @@
-﻿namespace FitnessApi.Models
+﻿using FitnessApi.Models;
+
+namespace FitnessApi.DTOs
 {
     public class TrainingPlanDTO
     {
@@ -11,7 +13,7 @@
 
         public class DetailPlan : IndexPlan
         {
-            public List<TrainingDay> TrainingDays { get; set; }
+            public IEnumerable<TrainingDay> TrainingDays { get; set; }
         }
         
         

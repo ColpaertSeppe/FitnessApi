@@ -18,11 +18,6 @@ namespace FitnessApi.Data
             }
         }
 
-        //public DbSet<Athlete> Athletes { get; set; }
-        //public DbSet<Coach> Coaches { get; set; }
-        //public DbSet<TrainingDay> TrainingDays { get; set; }
-        //public DbSet<TrainingPlan> TrainingPlans { get; set; }
-
         public DbSet<Athlete> Athletes => Set<Athlete>();
         public DbSet<Coach> Coaches => Set<Coach>();
         public DbSet<TrainingDay> TrainingDays => Set<TrainingDay>();
@@ -30,9 +25,6 @@ namespace FitnessApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //DataInitializer init = new(this);
-
-            //init.InitializeData();
 
         }
     }
