@@ -262,3 +262,6 @@ C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi
 C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\obj\Debug\net6.0\ref\FitnessApi.dll
 C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\obj\Debug\net6.0\FitnessApi.pdb
 C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\obj\Debug\net6.0\FitnessApi.genruntimeconfig.cache
+C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
