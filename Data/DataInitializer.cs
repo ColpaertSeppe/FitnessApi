@@ -14,94 +14,97 @@ namespace FitnessApi.Data
 
         public void InitializeData()
         {
-            _dbContext.Database.EnsureDeleted();
+            //_dbContext.Database.EnsureDeleted();
 
             if (_dbContext.Database.EnsureCreated())
             {
                 var days = CreateDays();
                 _dbContext.TrainingDays.AddRange(days);
+     
 
                 var plans = CreatePlans(days);
                 _dbContext.TrainingPlans.AddRange(plans);
-                //_dbContext.SaveChanges();
+       
 
                 var athletes = CreateAthletes(plans);
                 _dbContext.Athletes.AddRange(athletes);
-                //_dbContext.SaveChanges();
+       
 
                 var coaches = CreateCoaches(athletes);
                 _dbContext.Coaches.AddRange(coaches);
+
                 _dbContext.SaveChanges();
-            }           
+            }
         }
 
         public static List<TrainingDay> CreateDays()
         {
-            TrainingDayDTO dto1 = new(){
-                Id = 1,
+            TrainingDayDTO dto1 = new()
+            {
+                //Id = -1,
                 Name = "Day 1",
                 Description = "Dit is dag 1",
                 TrainingDate = new DateTime(2022, 1, 1)
             };
             TrainingDayDTO dto2 = new()
             {
-                Id = 2,
+                //Id = -2,
                 Name = "Day 2",
                 Description = "Dit is dag 2",
                 TrainingDate = new DateTime(2022, 1, 3)
             };
             TrainingDayDTO dto3 = new()
             {
-                Id = 3,
+                //Id = -3,
                 Name = "Day 3",
                 Description = "Dit is dag 3",
                 TrainingDate = new DateTime(2022, 1, 5)
             };
             TrainingDayDTO dto4 = new()
             {
-                Id = 4,
+                //Id = -4,
                 Name = "Day 5",
                 Description = "Dit is dag 6",
                 TrainingDate = new DateTime(2022, 1, 8)
             };
             TrainingDayDTO dto5 = new()
             {
-                Id = 5,
+                //Id = -5,
                 Name = "Day 5",
                 Description = "Dit is dag 5",
                 TrainingDate = new DateTime(2022, 1, 10)
             };
             TrainingDayDTO dto6 = new()
             {
-                Id = 6,
+                //Id = -6,
                 Name = "Day 6",
                 Description = "Dit is dag 6",
                 TrainingDate = new DateTime(2022, 1, 12)
             };
             TrainingDayDTO dto7 = new()
             {
-                Id = 7,
+                //Id = -7,
                 Name = "Training Day 7",
                 Description = "Dit is training 7",
                 TrainingDate = new DateTime(2022, 2, 1)
             };
             TrainingDayDTO dto8 = new()
             {
-                Id = 8,
+                //Id = -8,
                 Name = "Training Day 8",
                 Description = "Dit is training 8",
                 TrainingDate = new DateTime(2022, 2, 4)
-            }; 
+            };
             TrainingDayDTO dto9 = new()
             {
-                Id = 9,
+                //Id = -9,
                 Name = "Training Day 9",
                 Description = "Dit is training 9",
                 TrainingDate = new DateTime(2022, 2, 8)
-            }; 
+            };
             TrainingDayDTO dto10 = new()
             {
-                Id = 10,
+                //Id = -10,
                 Name = "Training Day 10",
                 Description = "Dit is training 10",
                 TrainingDate = new DateTime(2022, 2, 11)
@@ -126,15 +129,15 @@ namespace FitnessApi.Data
         {
             TrainingPlanDTO.IndexPlan dto1 = new()
             {
-                Id=1,
-                Name="Plan 1",
-                Description="Dit is plan 1"
+                //Id = -1,
+                Name = "Plan 1",
+                Description = "Dit is plan 1"
             };
             TrainingPlanDTO.IndexPlan dto2 = new()
             {
-                Id = 2,
-                Name = "Plan 3",
-                Description = "Dit is plan 3"
+                //Id = -2,
+                Name = "Plan 2",
+                Description = "Dit is plan 2"
             };
 
             TrainingPlan plan1 = new(dto1);
@@ -159,7 +162,7 @@ namespace FitnessApi.Data
         {
             AthleteDTO.IndexAthlete dto1 = new()
             {
-                Id = 1,
+                //Id = -1,
                 FirstName = "Seppe",
                 LastName = "Colpaert",
                 Email = "seppe.colpaert2@gmail.com",
@@ -169,7 +172,7 @@ namespace FitnessApi.Data
             };
             AthleteDTO.IndexAthlete dto2 = new()
             {
-                Id = 2,
+                //Id = -2,
                 FirstName = "Jan",
                 LastName = "Jansens",
                 Email = "jan@gmail.com",
@@ -179,7 +182,7 @@ namespace FitnessApi.Data
             };
             AthleteDTO.IndexAthlete dto3 = new()
             {
-                Id = 3,
+                //Id = -3,
                 FirstName = "Peter",
                 LastName = "Selie",
                 Email = "peterselie@gmail.com",
@@ -200,32 +203,32 @@ namespace FitnessApi.Data
             //athlete3.TrainingPlans.Add(plans[0]);
             //athlete3.TrainingPlans.Add(plans[1]);
 
-            return new List<Athlete> { athlete1 , athlete2 , athlete3 };   
+            return new List<Athlete> { athlete1, athlete2, athlete3 };
         }
 
         public static List<Coach> CreateCoaches(List<Athlete> athletes)
         {
             CoachDTO.IndexCoach dto1 = new()
             {
-                Id = 4,
+                //Id = -4,
                 FirstName = "Bo",
                 LastName = "Lava",
                 Email = "lavabo@gmail.com",
                 DateOfBirth = new DateTime(1980, 1, 1),
                 Weight = 70,
                 Height = 170,
-                Biography = "Ik ben Bo en ik sport graag",
+                Biography = "Ik ben Bo",
             };
             CoachDTO.IndexCoach dto2 = new()
             {
-                Id = 5,
+                //Id = -5,
                 FirstName = "Ka",
                 LastName = "Ching",
                 Email = "kaching@gmail.com",
                 DateOfBirth = new DateTime(1980, 1, 1),
                 Weight = 70,
                 Height = 170,
-                Biography = "Ik ben Ka en ik sport zeer graag",
+                Biography = "Ik ben Ka",
             };
 
             Coach coach1 = new(dto1);
@@ -235,7 +238,7 @@ namespace FitnessApi.Data
             coach2.Athletes.Add(athletes[1]);
             coach2.Athletes.Add(athletes[2]);
 
-            return new List<Coach> { coach1, coach2};
+            return new List<Coach> { coach1, coach2 };
         }
     }
 }

@@ -11,7 +11,7 @@
         public int Height { get; set; }
 
         //tracking
-        public DateTime CreationDate { get; set; }
+        //public DateTime CreationDate { get; set; }
         //public string ModifiedDate { get; set; }
         //public User CreatedBy { get; set; }
         //public User ModifiedBy { get; set; }
@@ -27,7 +27,7 @@
             this.Email = email;
             this.DateOfBirth = dateOfBirth;
 
-            this.CreationDate = DateTime.Now;
+            //this.CreationDate = DateTime.Now;
         }
 
         public User(int id, string firstName, string lastName, string email, DateTime dateOfBirth)
@@ -38,8 +38,7 @@
             this.Email = email;
             this.DateOfBirth = dateOfBirth;
 
-            this.CreationDate = DateTime.Now;
+            //this.CreationDate = DateTime.Now;
         }
-
     }
 }

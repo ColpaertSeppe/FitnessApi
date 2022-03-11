@@ -8,10 +8,10 @@ namespace FitnessApi.Data
 {
     public class DataContext : DbContext
     {
-        DataInitializer _initializer = null;
+        DataInitializer _initializer;
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            if (_initializer==null)
+            if (_initializer == null)
             {
                 _initializer = new(this);
                 _initializer.InitializeData();
@@ -25,7 +25,11 @@ namespace FitnessApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new AthleteConfiguration());
+            modelBuilder.ApplyConfiguration(new CoachConfiguration());
+            modelBuilder.ApplyConfiguration(new TrainingDayConfiguration());
+            modelBuilder.ApplyConfiguration(new TrainingPlanConfiguration());
         }
     }
 }

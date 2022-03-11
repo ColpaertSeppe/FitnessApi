@@ -7,6 +7,7 @@ namespace FitnessApi.Models {
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<TrainingDay> TrainingDays { get; set; }
+        public IList<Athlete> Athletes { get; set; }
 
         public TrainingPlan() { }
         public TrainingPlan(TrainingPlanDTO.IndexPlan plan)
@@ -16,6 +17,7 @@ namespace FitnessApi.Models {
             this.Description = plan.Description;
 
             this.TrainingDays = new List<TrainingDay>();
+            this.Athletes = new List<Athlete>();
         }
     }
 }

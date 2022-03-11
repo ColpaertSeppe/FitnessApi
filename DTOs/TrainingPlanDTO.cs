@@ -15,7 +15,5 @@ namespace FitnessApi.DTOs
         {
             public IEnumerable<TrainingDay> TrainingDays { get; set; }
         }
-        
-        
     }
 }

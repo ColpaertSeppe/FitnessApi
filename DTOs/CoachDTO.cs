@@ -18,7 +18,7 @@ namespace FitnessApi.DTOs
 
         public class DetailCoach : IndexCoach
         {
-            public IEnumerable<Athlete> Athletes { get; set; }
+            public IEnumerable<Athlete>? Athletes { get; set; }
         }        
     }
 }

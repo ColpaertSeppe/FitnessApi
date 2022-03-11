@@ -6,6 +6,8 @@ namespace FitnessApi.Models
     {
 
         public IList<TrainingPlan> TrainingPlans { get; set;}
+        public Coach Coach { get; set; }
+
         public Athlete()
         {
             TrainingPlans = new List<TrainingPlan>();
@@ -25,7 +27,7 @@ namespace FitnessApi.Models
 
             this.TrainingPlans = new List<TrainingPlan>();
 
-            this.CreationDate = DateTime.Now;
+            //this.CreationDate = DateTime.Now;
         }
     }
 }

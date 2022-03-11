@@ -1,14 +1,15 @@
-﻿using FitnessApi.Models;
+﻿
+using FitnessApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FitnessApi.Data.Mapping
 {
-    public class AthleteConfiguration : IEntityTypeConfiguration<Athlete>
+    public class CoachConfiguration : IEntityTypeConfiguration<Coach>
     {
-        public void Configure(EntityTypeBuilder<Athlete> builder)
+        public void Configure(EntityTypeBuilder<Coach> builder)
         {
-            builder.ToTable("athlete");
+            builder.ToTable("Coach");
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.FirstName).IsRequired().HasMaxLength(20);
@@ -17,10 +18,13 @@ namespace FitnessApi.Data.Mapping
             builder.Property(x => x.Email).IsRequired();
 
             builder.Property(x => x.Weight).IsRequired();
-            builder.Property(x=>x.Height).IsRequired();
+            builder.Property(x => x.Height).IsRequired();
 
-            //builder.HasMany(x => x.TrainingPlans)
-            //        .WithMany(x => x.Athletes);
+            builder.Property(x=> x.Biography).IsRequired();
+
+            //builder.HasMany(x => x.Athletes)
+            //        .WithOne(x => x.Coach)
+            //        .IsRequired();
         }
     }
 }

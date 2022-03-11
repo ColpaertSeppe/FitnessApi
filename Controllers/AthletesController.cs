@@ -38,7 +38,7 @@ namespace FitnessApi.Controllers
 
             var athletes = new List<AthleteDTO.IndexAthlete>();
 
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("FitnessDB")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
             {
                 var sql = "SELECT Id, FirstName, LastName, Email, DateOfBirth, Height, Weight FROM athlete";
 
@@ -50,7 +50,7 @@ namespace FitnessApi.Controllers
                 {
                     var athlete = new AthleteDTO.IndexAthlete()
                     {
-                        Id = (int)reader["ID"],
+                        Id = (int)reader["Id"],
                         FirstName = reader["FirstName"].ToString(),
                         LastName = reader["LastName"].ToString(),
                         Email = reader["Email"].ToString(),
