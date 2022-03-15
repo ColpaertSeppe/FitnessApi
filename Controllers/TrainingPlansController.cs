@@ -20,9 +20,9 @@ namespace FitnessApi.Controllers
 
         // api/TrainingPlans
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TrainingPlanDTO.IndexPlan>>> GetPlans()
+        public async Task<ActionResult<IEnumerable<TrainingPlanDTO>>> GetPlans()
         {
-            return await _context.TrainingPlans.Select(x => new TrainingPlanDTO.IndexPlan
+            return await _context.TrainingPlans.Select(x => new TrainingPlanDTO
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -33,7 +33,7 @@ namespace FitnessApi.Controllers
 
         // GET: api/TrainingPlans/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<TrainingPlanDTO.DetailPlan>>> GetTrainingPlanDetail(int id)
+        public async Task<ActionResult<IEnumerable<TrainingPlanDTO>>> GetTrainingPlanDetail(int id)
         {
             var coach = await _context.TrainingPlans.FindAsync(id);
 
@@ -42,7 +42,7 @@ namespace FitnessApi.Controllers
                 return NotFound();
             }
 
-            return await _context.TrainingPlans.Where(x => x.Id == id).Select(x => new TrainingPlanDTO.DetailPlan
+            return await _context.TrainingPlans.Where(x => x.Id == id).Select(x => new TrainingPlanDTO
             {
                 Id = x.Id,
                 Name = x.Name,

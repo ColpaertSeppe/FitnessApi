@@ -20,15 +20,15 @@ namespace FitnessApi.Data
             {
                 var days = CreateDays();
                 _dbContext.TrainingDays.AddRange(days);
-     
+
 
                 var plans = CreatePlans(days);
                 _dbContext.TrainingPlans.AddRange(plans);
-       
+
 
                 var athletes = CreateAthletes(plans);
                 _dbContext.Athletes.AddRange(athletes);
-       
+
 
                 var coaches = CreateCoaches(athletes);
                 _dbContext.Coaches.AddRange(coaches);
@@ -44,70 +44,110 @@ namespace FitnessApi.Data
                 //Id = -1,
                 Name = "Day 1",
                 Description = "Dit is dag 1",
-                TrainingDate = new DateTime(2022, 1, 1)
+                TrainingDate = new DateTime(2022, 1, 1),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto2 = new()
             {
                 //Id = -2,
                 Name = "Day 2",
                 Description = "Dit is dag 2",
-                TrainingDate = new DateTime(2022, 1, 3)
+                TrainingDate = new DateTime(2022, 1, 3),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto3 = new()
             {
                 //Id = -3,
                 Name = "Day 3",
                 Description = "Dit is dag 3",
-                TrainingDate = new DateTime(2022, 1, 5)
+                TrainingDate = new DateTime(2022, 1, 5),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto4 = new()
             {
                 //Id = -4,
                 Name = "Day 5",
                 Description = "Dit is dag 6",
-                TrainingDate = new DateTime(2022, 1, 8)
+                TrainingDate = new DateTime(2022, 1, 8),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto5 = new()
             {
                 //Id = -5,
                 Name = "Day 5",
                 Description = "Dit is dag 5",
-                TrainingDate = new DateTime(2022, 1, 10)
+                TrainingDate = new DateTime(2022, 1, 10),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto6 = new()
             {
                 //Id = -6,
                 Name = "Day 6",
                 Description = "Dit is dag 6",
-                TrainingDate = new DateTime(2022, 1, 12)
+                TrainingDate = new DateTime(2022, 1, 12),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto7 = new()
             {
                 //Id = -7,
                 Name = "Training Day 7",
                 Description = "Dit is training 7",
-                TrainingDate = new DateTime(2022, 2, 1)
+                TrainingDate = new DateTime(2022, 2, 1),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto8 = new()
             {
                 //Id = -8,
                 Name = "Training Day 8",
                 Description = "Dit is training 8",
-                TrainingDate = new DateTime(2022, 2, 4)
+                TrainingDate = new DateTime(2022, 2, 4),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto9 = new()
             {
                 //Id = -9,
                 Name = "Training Day 9",
                 Description = "Dit is training 9",
-                TrainingDate = new DateTime(2022, 2, 8)
+                TrainingDate = new DateTime(2022, 2, 8),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
             TrainingDayDTO dto10 = new()
             {
                 //Id = -10,
                 Name = "Training Day 10",
                 Description = "Dit is training 10",
-                TrainingDate = new DateTime(2022, 2, 11)
+                TrainingDate = new DateTime(2022, 2, 11),
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
 
 
@@ -127,17 +167,25 @@ namespace FitnessApi.Data
 
         public static List<TrainingPlan> CreatePlans(List<TrainingDay> days)
         {
-            TrainingPlanDTO.IndexPlan dto1 = new()
+            TrainingPlanDTO dto1 = new()
             {
                 //Id = -1,
                 Name = "Plan 1",
-                Description = "Dit is plan 1"
+                Description = "Dit is plan 1",
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
-            TrainingPlanDTO.IndexPlan dto2 = new()
+            TrainingPlanDTO dto2 = new()
             {
                 //Id = -2,
                 Name = "Plan 2",
-                Description = "Dit is plan 2"
+                Description = "Dit is plan 2",
+                CreatedOn = DateTime.Now,
+                CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
 
             TrainingPlan plan1 = new(dto1);

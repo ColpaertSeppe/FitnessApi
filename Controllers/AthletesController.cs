@@ -25,7 +25,7 @@ namespace FitnessApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AthleteDTO>>> GetAtheletes()
         {
-            //return await _context.Athletes.Select(x => new AthleteDTO.IndexAthlete
+            //return await _context.Athletes.Select(x => new AthleteDTO
             //{
             //    Id = x.Id,
             //    FirstName = x.FirstName,
