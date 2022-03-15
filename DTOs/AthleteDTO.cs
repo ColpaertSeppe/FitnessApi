@@ -19,6 +19,11 @@ namespace FitnessApi.DTOs
         {
             public IEnumerable<TrainingPlan> TrainingPlans { get; set; }
         }
+
+        public class CreateAthlete : IndexAthlete
+        {
+            public string CreatedBy { get; set; }  
+        }
     }
         
 }

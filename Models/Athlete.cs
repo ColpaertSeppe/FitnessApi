@@ -27,7 +27,7 @@ namespace FitnessApi.Models
 
             this.TrainingPlans = new List<TrainingPlan>();
 
-            //this.CreationDate = DateTime.Now;
+            this.CreatedOn = DateTime.Now;
         }
     }
 }

@@ -160,7 +160,7 @@ namespace FitnessApi.Data
 
         public static List<Athlete> CreateAthletes(List<TrainingPlan> plans)
         {
-            AthleteDTO.IndexAthlete dto1 = new()
+            AthleteDTO.CreateAthlete dto1 = new()
             {
                 //Id = -1,
                 FirstName = "Seppe",
@@ -169,8 +169,9 @@ namespace FitnessApi.Data
                 DateOfBirth = new DateTime(2000, 5, 10),
                 Weight = 83.5,
                 Height = 191,
+                CreatedBy = "admin",
             };
-            AthleteDTO.IndexAthlete dto2 = new()
+            AthleteDTO.CreateAthlete dto2 = new()
             {
                 //Id = -2,
                 FirstName = "Jan",
@@ -179,8 +180,9 @@ namespace FitnessApi.Data
                 DateOfBirth = new DateTime(1990, 1, 1),
                 Weight = 95,
                 Height = 210,
+                CreatedBy = "admin",
             };
-            AthleteDTO.IndexAthlete dto3 = new()
+            AthleteDTO.CreateAthlete dto3 = new()
             {
                 //Id = -3,
                 FirstName = "Peter",
@@ -189,6 +191,7 @@ namespace FitnessApi.Data
                 DateOfBirth = new DateTime(1999, 12, 31),
                 Weight = 70,
                 Height = 170,
+                CreatedBy = "admin",
             };
 
 
@@ -208,7 +211,7 @@ namespace FitnessApi.Data
 
         public static List<Coach> CreateCoaches(List<Athlete> athletes)
         {
-            CoachDTO.IndexCoach dto1 = new()
+            CoachDTO.CreateCoach dto1 = new()
             {
                 //Id = -4,
                 FirstName = "Bo",
@@ -218,8 +221,9 @@ namespace FitnessApi.Data
                 Weight = 70,
                 Height = 170,
                 Biography = "Ik ben Bo",
+                CreatedBy = "admin",
             };
-            CoachDTO.IndexCoach dto2 = new()
+            CoachDTO.CreateCoach dto2 = new()
             {
                 //Id = -5,
                 FirstName = "Ka",
@@ -229,6 +233,7 @@ namespace FitnessApi.Data
                 Weight = 70,
                 Height = 170,
                 Biography = "Ik ben Ka",
+                CreatedBy = "admin",
             };
 
             Coach coach1 = new(dto1);

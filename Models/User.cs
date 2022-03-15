@@ -1,6 +1,6 @@
 ﻿namespace FitnessApi.Models
 {
-    public class User
+    public class User : Trackable
     {
         public int Id { get; set; } 
         public string FirstName { get; set; }    
@@ -9,6 +9,10 @@
         public DateTime DateOfBirth{ get; set; }
         public double Weight { get; set; }
         public int Height { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime ModifiedOn { get; set; }
+        public string ModifiedBy { get; set; }
 
         //tracking
         //public DateTime CreationDate { get; set; }
@@ -27,6 +31,7 @@
             this.Email = email;
             this.DateOfBirth = dateOfBirth;
 
+            this.
             //this.CreationDate = DateTime.Now;
         }
 

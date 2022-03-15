@@ -25,6 +25,8 @@ namespace FitnessApi.Models
             this.Biography = coach.Biography;
 
             this.Athletes = new List<Athlete>();
+
+            this.CreatedOn = DateTime.Now;
         }
     }
 }
