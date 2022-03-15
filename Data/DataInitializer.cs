@@ -160,7 +160,7 @@ namespace FitnessApi.Data
 
         public static List<Athlete> CreateAthletes(List<TrainingPlan> plans)
         {
-            AthleteDTO.CreateAthlete dto1 = new()
+            AthleteDTO dto1 = new()
             {
                 //Id = -1,
                 FirstName = "Seppe",
@@ -169,9 +169,12 @@ namespace FitnessApi.Data
                 DateOfBirth = new DateTime(2000, 5, 10),
                 Weight = 83.5,
                 Height = 191,
+                CreatedOn = DateTime.Now,
                 CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
-            AthleteDTO.CreateAthlete dto2 = new()
+            AthleteDTO dto2 = new()
             {
                 //Id = -2,
                 FirstName = "Jan",
@@ -180,9 +183,12 @@ namespace FitnessApi.Data
                 DateOfBirth = new DateTime(1990, 1, 1),
                 Weight = 95,
                 Height = 210,
+                CreatedOn = DateTime.Now,
                 CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
-            AthleteDTO.CreateAthlete dto3 = new()
+            AthleteDTO dto3 = new()
             {
                 //Id = -3,
                 FirstName = "Peter",
@@ -191,7 +197,10 @@ namespace FitnessApi.Data
                 DateOfBirth = new DateTime(1999, 12, 31),
                 Weight = 70,
                 Height = 170,
+                CreatedOn = DateTime.Now,
                 CreatedBy = "admin",
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
 
 
@@ -211,7 +220,7 @@ namespace FitnessApi.Data
 
         public static List<Coach> CreateCoaches(List<Athlete> athletes)
         {
-            CoachDTO.CreateCoach dto1 = new()
+            CoachDTO dto1 = new()
             {
                 //Id = -4,
                 FirstName = "Bo",
@@ -222,8 +231,11 @@ namespace FitnessApi.Data
                 Height = 170,
                 Biography = "Ik ben Bo",
                 CreatedBy = "admin",
+                CreatedOn = DateTime.Now,
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
-            CoachDTO.CreateCoach dto2 = new()
+            CoachDTO dto2 = new()
             {
                 //Id = -5,
                 FirstName = "Ka",
@@ -234,6 +246,9 @@ namespace FitnessApi.Data
                 Height = 170,
                 Biography = "Ik ben Ka",
                 CreatedBy = "admin",
+                CreatedOn = DateTime.Now,
+                ModifiedBy = "admin",
+                ModifiedOn = DateTime.Now,
             };
 
             Coach coach1 = new(dto1);

@@ -23,7 +23,7 @@ namespace FitnessApi.Controllers
 
         //GET: api/Atheletes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AthleteDTO.IndexAthlete>>> GetAtheletes()
+        public async Task<ActionResult<IEnumerable<AthleteDTO>>> GetAtheletes()
         {
             //return await _context.Athletes.Select(x => new AthleteDTO.IndexAthlete
             //{
@@ -36,7 +36,7 @@ namespace FitnessApi.Controllers
             //    Weight = x.Weight,
             //}).ToListAsync();
 
-            var athletes = new List<AthleteDTO.IndexAthlete>();
+            var athletes = new List<AthleteDTO>();
 
             using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
             {
@@ -48,7 +48,7 @@ namespace FitnessApi.Controllers
 
                 while (reader.Read())
                 {
-                    var athlete = new AthleteDTO.IndexAthlete()
+                    var athlete = new AthleteDTO()
                     {
                         Id = (int)reader["Id"],
                         FirstName = reader["FirstName"].ToString(),
@@ -69,7 +69,7 @@ namespace FitnessApi.Controllers
 
         // GET: api/Atheletes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<AthleteDTO.DetailAthlete>>> GetAthleteDetail(int id)
+        public async Task<ActionResult<IEnumerable<AthleteDTO>>> GetAthleteDetail(int id)
         {
             var athlete = await _context.Athletes.FindAsync(id);
 
@@ -78,7 +78,7 @@ namespace FitnessApi.Controllers
                 return NotFound();
             }
 
-            return await _context.Athletes.Where(x => x.Id == id).Select(x => new AthleteDTO.DetailAthlete
+            return await _context.Athletes.Where(x => x.Id == id).Select(x => new AthleteDTO
             {
                 Id = x.Id,
                 FirstName = x.FirstName,

@@ -13,7 +13,7 @@ namespace FitnessApi.Models
             TrainingPlans = new List<TrainingPlan>();
         }
 
-        public Athlete(AthleteDTO.IndexAthlete athlete)
+        public Athlete(AthleteDTO athlete)
         {
             this.Id = athlete.Id;
             this.FirstName = athlete.FirstName;
@@ -27,7 +27,10 @@ namespace FitnessApi.Models
 
             this.TrainingPlans = new List<TrainingPlan>();
 
-            this.CreatedOn = DateTime.Now;
+            this.CreatedOn = athlete.CreatedOn;
+            this.CreatedBy = athlete.CreatedBy;
+            this.ModifiedOn = athlete.ModifiedOn;
+            this.ModifiedBy = athlete.ModifiedBy;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace FitnessApi.Models
         {
 
         }
-        public Coach(CoachDTO.IndexCoach coach)
+        public Coach(CoachDTO coach)
         {
             this.Id = coach.Id;
             this.FirstName = coach.FirstName;
@@ -26,7 +26,10 @@ namespace FitnessApi.Models
 
             this.Athletes = new List<Athlete>();
 
-            this.CreatedOn = DateTime.Now;
+            this.ModifiedOn = coach.ModifiedOn;
+            this.ModifiedBy = coach.ModifiedBy;
+            this.CreatedBy = coach.CreatedBy;
+            this.CreatedOn = coach.CreatedOn;
         }
     }
 }
