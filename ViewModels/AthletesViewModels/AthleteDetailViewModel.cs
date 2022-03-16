@@ -5,7 +5,7 @@ namespace FitnessApi.ViewModels.AthletesViewModels
 {
     public class AthleteDetailViewModel : AthleteIndexViewModel
     {
-        // id, firstName, lastName, DateOfBirth komen uit index
+        // id, firstName, lastName, DateOfBirth komen uit AthleteIndexViewModel
         public string Email { get; set; }
         public double Weight { get; set; }
         public int Height { get; set; }

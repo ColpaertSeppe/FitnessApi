@@ -265,3 +265,4 @@ C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi
 C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\Azure.Identity.dll
 C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\seppe\Documents\School\3e jaar\2de semester\Stage\fitnessApp\FitnessApi\bin\Debug\net6.0\AutoMapper.dll

@@ -39,7 +39,7 @@ namespace FitnessApi.Controllers
 
             using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
             {
-                var sql = "SELECT * FROM trainingplan";
+                var sql = "select * from trainingplan";
 
                 connection.Open();
                 using SqlCommand command = new(sql, connection);
@@ -104,7 +104,6 @@ namespace FitnessApi.Controllers
                     };
 
                     day.TrainingDays.Add(trainingDay);
-
                 }
                 connection.Close();
             }
