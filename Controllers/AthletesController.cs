@@ -52,8 +52,8 @@ namespace FitnessApi.Controllers
                     var athlete = new AthleteIndexViewModel()
                     {
                         Id = (int)reader["Id"],
-                        FirstName = reader["FirstName"].ToString(),
-                        LastName = reader["LastName"].ToString(),
+                        FirstName = (string)reader["FirstName"],
+                        LastName = (string)reader["LastName"],
                         DateOfBirth = (DateTime)reader["DateOfBirth"],
                     };
                     athletes.Add(athlete);
@@ -110,9 +110,9 @@ namespace FitnessApi.Controllers
                         athlete = new AthleteDetailViewModel()
                         {
                             Id = (int)reader["Id"],
-                            FirstName = reader["FirstName"].ToString(),
-                            LastName = reader["LastName"].ToString(),
-                            Email = reader["Email"].ToString(),
+                            FirstName = (string)reader["FirstName"],
+                            LastName = (string)reader["LastName"],
+                            Email = (string)reader["Email"],
                             DateOfBirth = (DateTime)reader["DateOfBirth"],
                             Height = (int)reader["Height"],
                             Weight = (double)reader["Weight"],
@@ -128,8 +128,8 @@ namespace FitnessApi.Controllers
                         var trainingPlan = new TrainingPlanIndexViewModel()
                         {
                             Id = (int)(reader["TrainingPlansId"]),
-                            Name = reader["Name"].ToString(),
-                            Description = reader["Description"].ToString(),
+                            Name = (string)reader["Name"],
+                            Description = (string)reader["Description"],
                         };
 
                         athlete.TrainingPlans.Add(trainingPlan);

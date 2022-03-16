@@ -62,22 +62,54 @@ namespace FitnessApi.Controllers
 
         // GET: api/TrainingPlans/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<TrainingPlanDTO>>> GetTrainingPlanDetail(int id)
+        public async Task<ActionResult<TrainingPlanDetailViewModel>> GetTrainingPlanDetail(int id)
         {
-            var coach = await _context.TrainingPlans.FindAsync(id);
+            var day = new TrainingPlanDetailViewModel();
 
-            if (coach == null)
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
             {
-                return NotFound();
+                var sql = "select p.Id as pId, p.Name as pName, p.[Description] as pDescr, d.Id as dId, d.Name as dName, d.[Description] as dDescr, d.TrainingDate " +
+                    "from trainingplan p " +
+                    "join trainingday d on p.Id = d.TrainingPlanId " +
+                    "where p.Id = " + id.ToString();
+
+                connection.Open();
+                using SqlCommand command = new(sql, connection);
+                using SqlDataReader reader = command.ExecuteReader();
+
+                bool flag = true;
+
+                while (reader.Read())
+                {
+                    //moet maar 1x doorlopen worden aangezien het over 1 day gaat
+                    if (flag)
+                    {
+                        day = new TrainingPlanDetailViewModel()
+                        {
+                            Id = (int)reader["pId"],
+                            Name = (string)reader["pName"],
+                            Description = (string)reader["pDescr"],
+                            TrainingDays = new List<TrainingDayIndexViewModel>(),
+                        };
+
+                        flag = false;
+                    }
+
+                    var trainingDay = new TrainingDayIndexViewModel()
+                    {
+                        Id = (int)(reader["dId"]),
+                        Name = (string)reader["dName"],
+                        Description = (string)reader["dDescr"],
+                        TrainingDate = (DateTime)reader["TrainingDate"]
+                    };
+
+                    day.TrainingDays.Add(trainingDay);
+
+                }
+                connection.Close();
             }
+            return day;
 
-            return await _context.TrainingPlans.Where(x => x.Id == id).Select(x => new TrainingPlanDTO
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Description= x.Description,
-                TrainingDays = x.TrainingDays,
-            }).ToListAsync();
         }
     }
 }
