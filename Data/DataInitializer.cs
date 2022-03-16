@@ -21,14 +21,11 @@ namespace FitnessApi.Data
                 var days = CreateDays();
                 _dbContext.TrainingDays.AddRange(days);
 
-
                 var plans = CreatePlans(days);
                 _dbContext.TrainingPlans.AddRange(plans);
 
-
                 var athletes = CreateAthletes(plans);
                 _dbContext.Athletes.AddRange(athletes);
-
 
                 var coaches = CreateCoaches(athletes);
                 _dbContext.Coaches.AddRange(coaches);
