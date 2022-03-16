@@ -254,11 +254,12 @@ namespace FitnessApi.Data
             Athlete athlete3 = new(dto3);
 
             athlete1.TrainingPlans.Add(plans[0]);
+            athlete2.TrainingPlans.Add(plans[0]);
             athlete2.TrainingPlans.Add(plans[1]);
 
-            //TODO plans bij athlete1 & 2 worden verwijderd als ze ook aan athlete 3 worden toegevoegd
-            //athlete3.TrainingPlans.Add(plans[0]);
-            //athlete3.TrainingPlans.Add(plans[1]);
+            //athlete1 => 1 trainingsplan
+            //athlete2 => 2 trainingplannen
+            //athlete3 => 0 trainingsplannen
 
             return new List<Athlete> { athlete1, athlete2, athlete3 };
         }

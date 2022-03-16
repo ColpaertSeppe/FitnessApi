@@ -60,12 +60,12 @@ namespace FitnessApi.Controllers
                 }
                 connection.Close();
             }
-                return athletes;
+            return athletes;
         }
 
         // GET: api/Atheletes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<AthleteDetailViewModel>>> GetAthleteDetail(int id)
+        public async Task<ActionResult<AthleteDetailViewModel>> GetAthleteDetail(int id)
         {
             //var athlete = await _context.Athletes.FindAsync(id);
 
@@ -86,51 +86,58 @@ namespace FitnessApi.Controllers
             //    TrainingPlans = x.TrainingPlans
             //}).ToListAsync();
 
-            var athletes = new List<AthleteDetailViewModel>();
+            var athlete = new AthleteDetailViewModel();
 
             using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
             {
+                //left join aangezien null kan zijn
                 var sql = "select * from athlete a " +
-                    "join AthleteTrainingPlan atp on a.Id = atp.AthletesId " +
-                    "join trainingplan tp on atp.TrainingPlansId = tp.Id " +
+                    "left join AthleteTrainingPlan atp on a.Id = atp.AthletesId " +
+                    "left join trainingplan tp on atp.TrainingPlansId = tp.Id " +
                     "where a.Id = " + id.ToString();
 
                 connection.Open();
                 using SqlCommand command = new(sql, connection);
                 using SqlDataReader reader = command.ExecuteReader();
 
+                bool flag = true;
+
                 while (reader.Read())
                 {
-                    var athlete = new AthleteDetailViewModel()
+                    //moet maar 1x doorlopen worden aangezien het over 1 athlete gaat
+                    if (flag)
                     {
-                        Id = (int)reader["AthletesId"],
-                        FirstName = reader["FirstName"].ToString(),
-                        LastName = reader["LastName"].ToString(),
-                        Email = reader["Email"].ToString(),
-                        DateOfBirth = (DateTime)reader["DateOfBirth"],
-                        Height = (int)reader["Height"],
-                        Weight = (double)reader["Weight"],
-                        TrainingPlans = new List<TrainingPlanIndexViewModel>(),
-                    };
+                        athlete = new AthleteDetailViewModel()
+                        {
+                            Id = (int)reader["Id"],
+                            FirstName = reader["FirstName"].ToString(),
+                            LastName = reader["LastName"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            DateOfBirth = (DateTime)reader["DateOfBirth"],
+                            Height = (int)reader["Height"],
+                            Weight = (double)reader["Weight"],
+                            TrainingPlans = new List<TrainingPlanIndexViewModel>(),
+                        };
 
-                    var trainingPlan = new TrainingPlanIndexViewModel()
+                        flag = false;
+                    }
+
+                    //kijken als col 13 AthletesId uit tussentabbel AthleteTrainingPlan null is
+                    if (!reader.IsDBNull(13))
                     {
-                        Id = (int)(reader["TrainingPlansId"]),
-                        Name = reader["Name"].ToString(),
-                        Description = reader["Description"].ToString(),
+                        var trainingPlan = new TrainingPlanIndexViewModel()
+                        {
+                            Id = (int)(reader["TrainingPlansId"]),
+                            Name = reader["Name"].ToString(),
+                            Description = reader["Description"].ToString(),
+                        };
 
-                    };
-
-                    athlete.TrainingPlans.Add(trainingPlan);
-
-                    athletes.Add(athlete);
+                        athlete.TrainingPlans.Add(trainingPlan);
+                    }
                 }
-
                 connection.Close();
             }
-
-            return athletes;
-
+            return athlete;
         }
     }
 }
