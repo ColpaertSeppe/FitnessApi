@@ -26,118 +26,117 @@ namespace FitnessApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AthleteIndexViewModel>>> GetAtheletes()
         {
-            //return await _context.Athletes.Select(x => new AthleteDTO
-            //{
-            //    Id = x.Id,
-            //    FirstName = x.FirstName,
-            //    LastName = x.LastName,
-            //    Email = x.Email,
-            //    DateOfBirth = x.DateOfBirth,
-            //    Height = x.Height,
-            //    Weight = x.Weight,
-            //}).ToListAsync();
-
-            var athletes = new List<AthleteIndexViewModel>();
-
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
+            return await _context.Athletes.Select(x => new AthleteIndexViewModel
             {
-                var sql = "SELECT * FROM athlete";
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                DateOfBirth = x.DateOfBirth,
+            }).ToListAsync();
 
-                connection.Open();
-                using SqlCommand command = new(sql, connection);
-                using SqlDataReader reader = command.ExecuteReader();
+            //var athletes = new List<AthleteIndexViewModel>();
 
-                while (reader.Read())
-                {
-                    var athlete = new AthleteIndexViewModel()
-                    {
-                        Id = (int)reader["Id"],
-                        FirstName = (string)reader["FirstName"],
-                        LastName = (string)reader["LastName"],
-                        DateOfBirth = (DateTime)reader["DateOfBirth"],
-                    };
-                    athletes.Add(athlete);
-                }
-                connection.Close();
-            }
-            return athletes;
+            //using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
+            //{
+            //    var sql = "SELECT * FROM athlete";
+
+            //    connection.Open();
+            //    using SqlCommand command = new(sql, connection);
+            //    using SqlDataReader reader = command.ExecuteReader();
+
+            //    while (reader.Read())
+            //    {
+            //        var athlete = new AthleteIndexViewModel()
+            //        {
+            //            Id = (int)reader["Id"],
+            //            FirstName = (string)reader["FirstName"],
+            //            LastName = (string)reader["LastName"],
+            //            DateOfBirth = (DateTime)reader["DateOfBirth"],
+            //        };
+            //        athletes.Add(athlete);
+            //    }
+            //    connection.Close();
+            //}
+            //return athletes;
         }
 
         // GET: api/Atheletes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AthleteDetailViewModel>> GetAthleteDetail(int id)
         {
-            //var athlete = await _context.Athletes.FindAsync(id);
+            var athlete = await _context.Athletes.FindAsync(id);
 
-            //if (athlete == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return await _context.Athletes.Where(x => x.Id == id).Select(x => new AthleteDetailViewModel
-            //{
-            //    Id = x.Id,
-            //    FirstName = x.FirstName,
-            //    LastName = x.LastName,
-            //    Email = x.Email,
-            //    DateOfBirth = x.DateOfBirth,
-            //    Height = x.Height,
-            //    Weight = x.Weight,
-            //    TrainingPlans = x.TrainingPlans
-            //}).ToListAsync();
-
-            var athlete = new AthleteDetailViewModel();
-
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
+            if (athlete == null)
             {
-                //left join aangezien null kan zijn
-                var sql = "select * from athlete a " +
-                    "left join AthleteTrainingPlan atp on a.Id = atp.AthletesId " +
-                    "left join trainingplan tp on atp.TrainingPlansId = tp.Id " +
-                    "where a.Id = " + id.ToString();
-
-                connection.Open();
-                using SqlCommand command = new(sql, connection);
-                using SqlDataReader reader = command.ExecuteReader();
-
-                bool flag = true;
-
-                while (reader.Read())
-                {
-                    //moet maar 1x doorlopen worden aangezien het over 1 athlete gaat
-                    if (flag)
-                    {
-                        athlete = new AthleteDetailViewModel()
-                        {
-                            Id = (int)reader["Id"],
-                            FirstName = (string)reader["FirstName"],
-                            LastName = (string)reader["LastName"],
-                            Email = (string)reader["Email"],
-                            DateOfBirth = (DateTime)reader["DateOfBirth"],
-                            Height = (int)reader["Height"],
-                            Weight = (double)reader["Weight"],
-                            TrainingPlans = new List<TrainingPlanIndexViewModel>(),
-                        };
-
-                        flag = false;
-                    }
-
-                    //kijken als col 13 AthletesId uit tussentabbel AthleteTrainingPlan null is
-                    if (!reader.IsDBNull(13))
-                    {
-                        var trainingPlan = new TrainingPlanIndexViewModel()
-                        {
-                            Id = (int)(reader["TrainingPlansId"]),
-                            Name = (string)reader["Name"],
-                            Description = (string)reader["Description"],
-                        };
-
-                        athlete.TrainingPlans.Add(trainingPlan);
-                    }
-                }
-                connection.Close();
+                return NotFound();
             }
-            return athlete;
+            
+            var res = new AthleteDetailViewModel()
+            {
+                Id= athlete.Id,
+                FirstName = athlete.FirstName,
+                LastName = athlete.LastName,
+                DateOfBirth = athlete.DateOfBirth,
+                Email = athlete.Email,
+                Height = athlete.Height,
+                Weight = athlete.Weight,
+                //TrainingPlans = athlete.TrainingPlans,
+            };
+
+            return res;
+
+            //var athlete = new AthleteDetailViewModel();
+
+            //using (var connection = new SqlConnection(_configuration.GetConnectionString("Fitness-db")))
+            //{
+            //    //left join aangezien null kan zijn
+            //    var sql = "select * from athlete a " +
+            //        "left join AthleteTrainingPlan atp on a.Id = atp.AthletesId " +
+            //        "left join trainingplan tp on atp.TrainingPlansId = tp.Id " +
+            //        "where a.Id = " + id.ToString();
+
+            //    connection.Open();
+            //    using SqlCommand command = new(sql, connection);
+            //    using SqlDataReader reader = command.ExecuteReader();
+
+            //    bool flag = true;
+
+            //    while (reader.Read())
+            //    {
+            //        //moet maar 1x doorlopen worden aangezien het over 1 athlete gaat
+            //        if (flag)
+            //        {
+            //            athlete = new AthleteDetailViewModel()
+            //            {
+            //                Id = (int)reader["Id"],
+            //                FirstName = (string)reader["FirstName"],
+            //                LastName = (string)reader["LastName"],
+            //                Email = (string)reader["Email"],
+            //                DateOfBirth = (DateTime)reader["DateOfBirth"],
+            //                Height = (int)reader["Height"],
+            //                Weight = (double)reader["Weight"],
+            //                TrainingPlans = new List<TrainingPlanIndexViewModel>(),
+            //            };
+
+            //            flag = false;
+            //        }
+
+            //        //kijken als col 13 AthletesId uit tussentabbel AthleteTrainingPlan null is
+            //        if (!reader.IsDBNull(13))
+            //        {
+            //            var trainingPlan = new TrainingPlanIndexViewModel()
+            //            {
+            //                Id = (int)(reader["TrainingPlansId"]),
+            //                Name = (string)reader["Name"],
+            //                Description = (string)reader["Description"],
+            //            };
+
+            //            athlete.TrainingPlans.Add(trainingPlan);
+            //        }
+            //    }
+            //    connection.Close();
+            //}
+            //return athlete;
         }
     }
 }

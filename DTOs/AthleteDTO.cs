@@ -12,7 +12,7 @@ namespace FitnessApi.DTOs
         public double Weight { get; set; }
         public int Height { get; set; }
 
-        public IList<TrainingPlan> TrainingPlans { get; set; }
+        public IList<TrainingPlanDTO> TrainingPlans { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }

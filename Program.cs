@@ -10,15 +10,15 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<DataContext>(opt =>
 {
-    //opt.UseInMemoryDatabase("FitnessList");
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("Fitness-db"),
-        sqlServerOptionsAction: sqlOptions =>
-        {
-            sqlOptions.EnableRetryOnFailure(
-                maxRetryCount: 10,
-                maxRetryDelay: TimeSpan.FromSeconds(30),
-                errorNumbersToAdd: null);
-        });
+    opt.UseInMemoryDatabase("FitnessList");
+    //opt.UseSqlServer(builder.Configuration.GetConnectionString("Fitness-db"),
+    //    sqlServerOptionsAction: sqlOptions =>
+    //    {
+    //        sqlOptions.EnableRetryOnFailure(
+    //            maxRetryCount: 10,
+    //            maxRetryDelay: TimeSpan.FromSeconds(30),
+    //            errorNumbersToAdd: null);
+    //    });
 });
 
 

@@ -1,5 +1,6 @@
 ﻿
 using FitnessApi.Data.Mapping;
+using FitnessApi.DTOs;
 using FitnessApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
